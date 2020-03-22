@@ -18,6 +18,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     int zahl = 1;
     TextView zahlView;
 
+    //für findPrim
     private int Runden;
     private int potPrim;
     private int count;
@@ -36,8 +37,8 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         zahlView = (TextView)findViewById(R.id.game_zahl);
         zahlView.setText(String.valueOf(zahl));
 
-        potPrim = 10;
-        Runden = 0;
+        //für potPrim
+        potPrim = 12;
     }
 
     private void resetPrims(){
@@ -48,6 +49,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         prims.add(5);
         prims.add(7);
         prims.add(11);
+        potPrim = 12;
     }
 
 
@@ -57,12 +59,14 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
             //Richtig
             if(zahl == prims.get(0)){
                 prims.remove(0);
-                //prims.add(getPrim());
+                findPrim();
+                prims.add(potPrim);
             }
-            zahl += rnd.nextInt(3);
-            if(zahl >= prims.get(0)){
+            zahl += rnd.nextInt(3)+1;
+            if(zahl > prims.get(0)){
                 prims.remove(0);
-                //prims.add(getPrim());
+                findPrim();
+                prims.add(potPrim);
             }
             zahlView.setText(String.valueOf(zahl));
         }else {
@@ -79,18 +83,14 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
             potPrim = potPrim + 1;
             Runden2 = 0;
 
-            for (count = 0; count <= potPrim; count += 1)
+            for (count = 1; count <= potPrim; count += 1)
             {
 
                 rest = potPrim % count;
 
-
-
                 if (rest == 0) {
                     Runden2 = Runden2 + 1;
                 }
-
-
 
             }
 
@@ -101,4 +101,5 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
 }
