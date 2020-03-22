@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class HauptmenueActivity extends AppCompatActivity {
+
     private Button buttonSpiel;
     private Button buttonScoreboard;
 
@@ -32,6 +33,7 @@ public class HauptmenueActivity extends AppCompatActivity {
                 openScoreboard();
             }
         });
+
     }
 
 
