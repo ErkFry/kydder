@@ -46,12 +46,19 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if ((zahl == prims.get(0) && v.getId() == R.id.game_right) || (zahl != prims.get(0) && v.getId() == R.id.game_wrong)){
-            //Button Richtig
+            //Richtig
+            if(zahl == prims.get(0)){
+                prims.remove(0);
+                //prims.add(getPrim());
+            }
             zahl += rnd.nextInt(3);
+            if(zahl >= prims.get(0)){
+                prims.remove(0);
+                //prims.add(getPrim());
+            }
             zahlView.setText(String.valueOf(zahl));
-            //prims.add(getPrim());
         }else {
-            //Button Falsch
+            //Falsch
             resetPrims();
             zahlView.setText(String.valueOf(zahl));
         }
