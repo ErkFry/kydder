@@ -48,6 +48,4 @@ public class HauptmenueActivity extends AppCompatActivity {
         startActivity(intentScoraboard);
     }
 
-
-
 }
