@@ -1,6 +1,7 @@
 package com.example.kydder;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
 
     int zahl = 1;
     TextView zahlView;
+    TextView Time1;
 
     //für findPrim
     private int Runden;
@@ -24,6 +26,8 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     private int count;
     private int rest;
     private int Runden2;
+
+    private int timeramount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,12 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.game_wrong).setOnClickListener(this);
         zahlView = (TextView)findViewById(R.id.game_zahl);
         zahlView.setText(String.valueOf(zahl));
+        Time1 = (TextView) findViewById(R.id.tVTime);
 
         //für potPrim
         potPrim = 12;
+
+        Timer.start();
     }
 
     private void resetPrims(){
@@ -51,6 +58,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         prims.add(11);
         potPrim = 12;
     }
+
 
 
     @Override
@@ -73,33 +81,39 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
             //Falsch
             resetPrims();
             zahlView.setText(String.valueOf(zahl));
+
         }
+        Timer.cancel();
+        Timer.start();
+
     }
 
-    public void findPrim (){
+    public void findPrim () {
         Runden = 0;
         while (Runden == 0) {
-
             potPrim = potPrim + 1;
             Runden2 = 0;
-
-            for (count = 1; count <= potPrim; count += 1)
-            {
-
+            for (count = 1; count <= potPrim; count += 1) {
                 rest = potPrim % count;
-
                 if (rest == 0) {
                     Runden2 = Runden2 + 1;
                 }
-
             }
-
-            if (Runden2 < 3){
+            if (Runden2 < 3) {
                 Runden = 1;
             }
-
         }
-
     }
 
+    CountDownTimer Timer = new CountDownTimer(20000,1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            Time1.setText((int) (millisUntilFinished / 1000));
+        }
+
+        @Override
+        public void onFinish() {
+            resetPrims();
+        }
+    };
 }
