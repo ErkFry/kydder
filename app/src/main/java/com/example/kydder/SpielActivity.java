@@ -1,5 +1,6 @@
 package com.example.kydder;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -51,7 +52,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     private void resetPrims(){
         zahl = 1;
         prims.clear();
-        prims.add(1);
+        prims.add(2);
         prims.add(3);
         prims.add(5);
         prims.add(7);
@@ -116,4 +117,6 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
             resetPrims();
         }
     };
+
+
 }
