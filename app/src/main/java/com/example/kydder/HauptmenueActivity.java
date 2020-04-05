@@ -18,6 +18,9 @@ public class HauptmenueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Scoreboard initialisierung
+        ScoreSafer.readScoreboard(this);
+
         buttonSpiel = (Button) findViewById(R.id.bSpiel);
         buttonSpiel.setOnClickListener(new View.OnClickListener() {
             @Override

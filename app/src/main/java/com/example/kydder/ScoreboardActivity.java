@@ -11,14 +11,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class ScoreboardActivity extends AppCompatActivity {
 
+    //Objekte
     RecyclerView score_list;
     ScoreAdapter score_adapater;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +31,12 @@ public class ScoreboardActivity extends AppCompatActivity {
         //Getting Views
         score_list = findViewById(R.id.score_recycler);
 
-        //Init objects
-        String[] names = new String[]{"Eheerrik", "Fimms", "chrisso", "Mausa"};
+        //Load Scoreboard
+        ArrayList<ScoreSafer.Score> scores = ScoreSafer.getScoreboard();
+        /*String[] names = new String[]{"Eheerrik", "Fimms", "chrisso", "Mausa"};
         String[] dates = new String[]{"ahsd", "sasd", "idk", "alistinkt"};
-        String[] scores = new String[]{"2089", "41", "9", "7"};
-        score_adapater = new ScoreAdapter(names, scores, dates);
+        String[] scores = new String[]{"2089", "41", "9", "7"};*/
+        score_adapater = new ScoreAdapter(scores);
 
         //Setting things up
         score_adapater.notifyDataSetChanged();
@@ -57,6 +61,21 @@ class ScoreAdapter extends RecyclerView.Adapter<ScoreViewHolder> {
         mNames = new ArrayList<>(Arrays.asList(names));
         mScores = new ArrayList<>(Arrays.asList(scores));
         mDates = new ArrayList<>(Arrays.asList(dates));
+    }
+
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public ScoreAdapter(ArrayList<ScoreSafer.Score> scores) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+        mNames = new ArrayList<>();
+        mScores = new ArrayList<>();
+        mDates = new ArrayList<>();
+        for (ScoreSafer.Score score: scores) {
+            mNames.add(score.name);
+            mScores.add(String.valueOf(score.score));
+            mDates.add(sdf.format(new Date(score.date)));
+        }
+
+
     }
 
     // Create new views (invoked by the layout manager)

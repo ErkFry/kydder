@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class ScoreSafer {
@@ -70,10 +69,12 @@ public class ScoreSafer {
                 // ahhaa match
                 scores.add(i, score);
 
-                while (scores.size() > maxSize){
+                while (scores.size() > maxSize) {
                     // Solange das letzte entfernen bis die size passt
                     scores.remove(maxSize);
                 }
+
+                // @Erik F und Finn daran denken hier mal asynchron eine sicherheits speicherung aufrufen
 
                 // Platzierung
                 return i+1;
