@@ -15,10 +15,29 @@ import java.util.Arrays;
 
 public class ScoreboardActivity extends AppCompatActivity {
 
+    RecyclerView score_list;
+    ScoreAdapter score_adapater;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
+
+        //Getting Views
+        score_list = findViewById(R.id.score_recycler);
+
+        //Init objects
+        String[] names = new String[]{"Eheerrik", "Fimms", "chrisso", "Mausa"};
+        String[] dates = new String[]{"ahsd", "sasd", "idk", "alistinkt"};
+        String[] scores = new String[]{"2089", "41", "9", "7"};
+        score_adapater = new ScoreAdapter(names, scores, dates);
+
+        //Setting things up
+        score_list.setAdapter(score_adapater);
+
+
+
      }
 
 }
@@ -41,8 +60,7 @@ class ScoreAdapter extends RecyclerView.Adapter<ScoreViewHolder> {
     @Override
     public ScoreViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        ConstraintLayout layout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.view_holder_scoreboard, parent, false);
+        ConstraintLayout layout = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_scoreboard, parent, false);
         ScoreViewHolder vh = new ScoreViewHolder(layout);
         return vh;
     }
@@ -52,7 +70,10 @@ class ScoreAdapter extends RecyclerView.Adapter<ScoreViewHolder> {
     public void onBindViewHolder(ScoreViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mNames.get(position));
+        holder.place.setText(position+1);
+        holder.name.setText(mNames.get(position));
+        holder.date.setText(mDates.get(position));
+        holder.score.setText(mScores.get(position));
 
 
     }
@@ -71,9 +92,17 @@ class ScoreAdapter extends RecyclerView.Adapter<ScoreViewHolder> {
 class ScoreViewHolder extends RecyclerView.ViewHolder {
 
     // each data item is just a string in this case
-    public TextView textView;
+    public TextView place;
+    public TextView score;
+    public TextView date;
+    public TextView name;
+
     public ScoreViewHolder(ConstraintLayout layout) {
         super(layout);
+        place = layout.findViewById(R.id.score_place);
+        score = layout.findViewById(R.id.score_score);
+        date = layout.findViewById(R.id.score_date);
+        name = layout.findViewById(R.id.score_name);
     }
 
 }
