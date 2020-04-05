@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         score_adapater = new ScoreAdapter(names, scores, dates);
 
         //Setting things up
+        score_adapater.notifyDataSetChanged();
+        score_list.setLayoutManager(new LinearLayoutManager(this));
         score_list.setAdapter(score_adapater);
 
 
@@ -70,7 +73,7 @@ class ScoreAdapter extends RecyclerView.Adapter<ScoreViewHolder> {
     public void onBindViewHolder(ScoreViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.place.setText(position+1);
+        holder.place.setText(String.valueOf(position+1));
         holder.name.setText(mNames.get(position));
         holder.date.setText(mDates.get(position));
         holder.score.setText(mScores.get(position));
