@@ -18,6 +18,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     Random rnd = new Random();
 
     int zahl = 1;
+    int lastPrim = 2;
     TextView zahlView;
     TextView Time1;
 
@@ -58,6 +59,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         prims.add(7);
         prims.add(11);
         potPrim = 12;
+        lastPrim = 2;
     }
 
 
@@ -66,7 +68,8 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if ((zahl == prims.get(0) && v.getId() == R.id.game_right) || (zahl != prims.get(0) && v.getId() == R.id.game_wrong)){
             //Richtig
-            if(zahl == prims.get(0)){
+            if(zahl == prims.get(0)){   // Ist eine Primzahl
+                lastPrim = zahl;
                 prims.remove(0);
                 findPrim();
                 prims.add(potPrim);
@@ -80,6 +83,8 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
             zahlView.setText(String.valueOf(zahl));
         }else {
             //Falsch
+            ScoreSafer.addScore(new ScoreSafer.Score("Fimms", System.currentTimeMillis(), lastPrim));
+            ScoreSafer.saveScoreboard(this);
             resetPrims();
             zahlView.setText(String.valueOf(zahl));
 
