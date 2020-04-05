@@ -17,7 +17,7 @@ public class ScoreSafer {
 
     private static final int maxSize = 25;
 
-    protected static ArrayList<Score> scores;
+    protected static ArrayList<Score> scores = new ArrayList<>();
 
     public static boolean saveScoreboard(Context context){
         if (scores == null)
@@ -67,21 +67,27 @@ public class ScoreSafer {
         for (int i = 0; i < scores.size(); i++){
             if (score.score > scores.get(i).score){
                 // ahhaa match
-                scores.add(i, score);
-
-                while (scores.size() > maxSize) {
-                    // Solange das letzte entfernen bis die size passt
-                    scores.remove(maxSize);
-                }
-
-                // @Erik F und Finn daran denken hier mal asynchron eine sicherheits speicherung aufrufen
-
-                // Platzierung
-                return i+1;
+                return intern_addScore(i, score);
             }
         }
-
+        if(scores.size() < maxSize){
+            return intern_addScore(scores.size(), score);
+        }
         return 0;
+    }
+
+    private static int intern_addScore(int i, Score score){
+        scores.add(i, score);
+
+        while (scores.size() > maxSize) {
+            // Solange das letzte entfernen bis die size passt
+            scores.remove(maxSize);
+        }
+
+        // @Erik F und Finn daran denken hier mal asynchron eine sicherheits speicherung aufrufen
+
+        // Platzierung
+        return i+1;
     }
 
     public static ArrayList<Score> getScoreboard(){
