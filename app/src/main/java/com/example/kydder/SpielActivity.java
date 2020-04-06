@@ -99,13 +99,13 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         while (Runden == 0) {
             potPrim = potPrim + 1;
             Runden2 = 0;
-            for (count = 1; count <= potPrim; count += 1) {
+            for (count = 1; count <= potPrim / 2 + 1; count += 1) {
                 rest = potPrim % count;
                 if (rest == 0) {
                     Runden2 = Runden2 + 1;
                 }
             }
-            if (Runden2 < 3) {
+            if (Runden2 < 2) {
                 Runden = 1;
             }
         }
@@ -119,7 +119,13 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
 
         @Override
         public void onFinish() {
+           //Zeit abgelaufen alles auf Anfang
+            ScoreSafer.addScore(new ScoreSafer.Score("Fimms", System.currentTimeMillis(), lastPrim));
+            ScoreSafer.saveScoreboard(getBaseContext());
             resetPrims();
+            Timer.cancel();
+            Timer.start();
+            zahlView.setText(String.valueOf(zahl));
         }
     };
 
