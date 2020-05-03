@@ -9,5 +9,12 @@
     <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#FF0000</color>
     <color name="colorBackground">#000116</color>
+    <color name="yellow2">#FFC107</color>
+    <color name="yellow1">#FFEB3B</color>
+    <color name="grey05">#888888</color>
+    <color name="orange4">#FF5722</color>
+    <color name="orange5">#F44336</color>
+    <color name="blue2">#03A9F4</color>
+    <color name="blue25">#3F51B5</color>
 
 </resources>

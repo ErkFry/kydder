@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/MainTheme"
     tools:context=".HauptmenueActivity">
 
     <Button
         android:id="@+id/bSpiel"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
         android:fontFamily="sans-serif"
         android:text="Spiel"
-        android:theme="@style/AppTheme.Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402" />
+        app:layout_constraintVertical_bias="0.402"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="4dp" />
 
     <Button
         android:id="@+id/bScoreboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         android:text="Scoreboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,19 +36,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.633" />
 
-    <view
-        android:id="@+id/view"
-        style="@style/AppTheme.Button"
-        class="com.google.android.material.button.MaterialButton"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/testbut"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:paddingLeft="32"
-        android:paddingRight="32"
-        android:text="@string/title_activity_spiel"
-        android:textAppearance="@style/AppTheme.Button.TextApperance"
-        app:strokeWidth="2dp"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="160dp" />
-
+        android:text="UNFILLED MATERIAL BUTTON"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="2dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

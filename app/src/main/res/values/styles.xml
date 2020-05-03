@@ -1,29 +1,36 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="buttonStyle">@style/AppTheme.Button</item>
-    </style>
-    <style name="AppTheme.NoActionBar">
+
+<!--        <item name="buttonStyle">@style/AppTheme.Button</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <!-- Theme for the Main Activity Constraint Layout -->
+    <style name="MainTheme">
+        <item name="background">@color/colorBackground</item>
+    </style>
+
+    <!-- Dark Action Bar and Light Popup theme -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+
+    <style name="MainButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">@color/colorAccent</item>
         <item name="strokeWidth">4dp</item>
-        <item name="textAppearanceButton">@style/AppTheme.Button.TextApperance</item>
+        <item name="textAppearanceButton">@style/MainTextApperance</item>
 
+        <item name="background">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Button.TextApperance" parent="TextAppearance.AppCompat">
+    <style name="MainTextApperance" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">24dp</item>
         <item name="android:textAllCaps">true</item>
