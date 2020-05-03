@@ -8,20 +8,46 @@
     tools:context=".HauptmenueActivity">
 
     <Button
-        android:id="@+id/bSpiel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:id="@+id/testbutton"
+        android:layout_width="234dp"
+        android:layout_height="88dp"
+        android:background="@drawable/main_button_glow"
+        android:backgroundTint="@color/colorAccent"
+        android:elevation="0dp"
         android:fontFamily="sans-serif"
-        android:text="Spiel"
+        android:text="Button"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/MainButtonStyle"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402"
-        app:strokeColor="@color/colorAccent"
-        app:strokeWidth="4dp" />
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <Button
+        android:id="@+id/bSpiel"
+        android:layout_width="234dp"
+        android:layout_height="88dp"
+        android:background="@drawable/main_button_glow"
+        android:backgroundTint="@color/colorAccent"
+        android:elevation="0dp"
+        android:fontFamily="sans-serif"
+        android:text="Spiel"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/MainButtonStyle"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.402" />
 
     <Button
         android:id="@+id/bScoreboard"
@@ -35,6 +61,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.633" />
+    <!--        android:background="@android:drawable/btn_borderless_material"-->
+    <!--        -->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/testbut"
