@@ -1,32 +1,49 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="buttonStyle">@style/AppTheme.Button</item>
-    </style>
-    <style name="AppTheme.NoActionBar">
+
+<!--        <item name="buttonStyle">@style/AppTheme.Button</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorControlHighlight">#fff</item>
     </style>
+
+    <!-- Theme for the Main Activity Constraint Layout -->
+    <style name="MainTheme">
+        <item name="background">@color/colorBackground</item>
+    </style>
+
+    <!-- Dark Action Bar and Light Popup theme -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="strokeColor">@color/colorAccent</item>
-        <item name="strokeWidth">4dp</item>
-        <item name="textAppearanceButton">@style/AppTheme.Button.TextApperance</item>
 
-    </style>
+<!--    <style name="MainButton" parent="Widget.MaterialComponents.Button.OutlinedButton">-->
+<!--        <item name="strokeColor">@color/colorAccent</item>-->
+<!--        <item name="strokeWidth">4dp</item>-->
+<!--        <item name="textAppearanceButton">@style/MainTextApperance</item>-->
 
-    <style name="AppTheme.Button.TextApperance" parent="TextAppearance.AppCompat">
+<!--        <item name="background">@color/colorAccent</item>-->
+<!--    </style>-->
+
+    <style name="MainTextApperance">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">24dp</item>
+        <item name="background">@mipmap/main_button_glow</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="MainButtonStyle">
+        <item name="textAllCaps">true</item>
+        <item name="background">@mipmap/main_button_glow</item>
+<!--        <item name="backgroundTint">@color/blue2</item>-->
+
+
     </style>
 
 
