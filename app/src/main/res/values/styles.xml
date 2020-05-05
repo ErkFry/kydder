@@ -9,7 +9,7 @@
 
 <!--        <item name="buttonStyle">@style/AppTheme.Button</item>-->
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="colorControlHighlight">#fff</item>
     </style>
 
