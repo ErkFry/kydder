@@ -31,19 +31,33 @@
 <!--        <item name="background">@color/colorAccent</item>-->
 <!--    </style>-->
 
-    <style name="MainTextApperance">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">24dp</item>
-        <item name="background">@mipmap/main_button_glow</item>
-        <item name="android:textAllCaps">true</item>
+
+    <style name="MainButtonStyle" parent="android:Widget.Material.Button">
+<!--        Bin mir bei dem Parent noch nicht sicher glaube das das der Standart eingestellte Button Style im aktuellen Theme ist-->
+<!--        <item name="textAllCaps">true</item>-->
+
+        <item name="android:background">@drawable/main_button_ripple</item>
+<!--        <item name="android:backgroundTint"></item>-->
+        <item name="android:foreground">@mipmap/button_glow_12_c</item>
+        <item name="android:foregroundTint">@color/colorAccent</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:textAppearance">@style/MainButtonTextApperance</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+
+
+
+
     </style>
 
-    <style name="MainButtonStyle">
-        <item name="textAllCaps">true</item>
-        <item name="background">@mipmap/main_button_glow</item>
-<!--        <item name="backgroundTint">@color/blue2</item>-->
-
-
+    <style name="MainButtonTextApperance">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
 
