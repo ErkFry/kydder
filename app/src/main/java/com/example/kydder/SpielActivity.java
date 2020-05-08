@@ -120,7 +120,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     CountDownTimer Timer = new CountDownTimer(20000,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
-            Time1.setText(String.valueOf (millisUntilFinished / 1000));
+            Time1.setText(String.valueOf (millisUntilFinished / 1000) + "s");
         }
 
         @Override
