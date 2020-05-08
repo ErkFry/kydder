@@ -38,6 +38,7 @@
         android:id="@+id/main_logo"
         android:layout_width="164dp"
         android:layout_height="180dp"
+        android:transitionName="logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

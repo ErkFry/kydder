@@ -3,9 +3,11 @@ package com.example.kydder;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.transition.Explode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     int lastPrim = 2;
     TextView zahlView;
     TextView Time1;
+    ImageView logo;
 
     //für findPrim
     private int Runden;
@@ -38,21 +41,30 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         //Entfernt die ActionBar und den TItel
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spiel);
 
+        getSupportActionBar().hide();
+
+
         resetPrims();
 
+        logo = findViewById(R.id.game_logo);
         findViewById(R.id.game_right).setOnClickListener(this);
         findViewById(R.id.game_wrong).setOnClickListener(this);
         zahlView = (TextView)findViewById(R.id.game_zahl);
         zahlView.setText(String.valueOf(zahl));
         Time1 = (TextView) findViewById(R.id.tVTime);
 
+
         //für potPrim
         potPrim = 12;
 
+
+
+
+        //Iwie anders noch
         Timer.start();
     }
 
