@@ -9,6 +9,9 @@
     <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#FF0000</color>
     <color name="colorBackground">#000116</color>
+
+
+    <!-- Alles muell ab hier -->
     <color name="yellow2">#FFC107</color>
     <color name="yellow1">#FFEB3B</color>
     <color name="grey05">#888888</color>
