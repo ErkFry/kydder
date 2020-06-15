@@ -1,6 +1,7 @@
 package com.example.kydder;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
@@ -117,6 +118,8 @@ public class ScoreSafer {
             this.date = date;
             this.score = score;
         }
+
+
 
         @NonNull
         @Override

@@ -1,6 +1,8 @@
 package com.example.kydder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.ActivityOptions;
 import android.content.DialogInterface;
@@ -74,5 +76,6 @@ public class HauptmenueActivity extends AppCompatActivity {
         Intent intentScoraboard = new Intent(this, ScoreboardActivity.class);
         startActivity(intentScoraboard);
     }
+
 
 }

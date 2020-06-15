@@ -2,9 +2,11 @@ package com.example.kydder;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     //Objekte
     RecyclerView score_list;
     ScoreAdapter score_adapater;
+    ImageView PfeilZurück;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +52,14 @@ public class ScoreboardActivity extends AppCompatActivity {
         score_list.setLayoutManager(new LinearLayoutManager(this));
         score_list.setAdapter(score_adapater);
 
-
-
+        //Pfeil als zurück möglichkeit
+        PfeilZurück = findViewById(R.id.score_back);
+        PfeilZurück.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
      }
 
 }

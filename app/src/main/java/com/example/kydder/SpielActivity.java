@@ -1,20 +1,22 @@
 package com.example.kydder;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.transition.Explode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.jar.Attributes;
 
 public class SpielActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,15 +28,20 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
     TextView zahlView;
     TextView Time1;
     ImageView logo;
-
     //für findPrim
     private int Runden;
     private int potPrim;
     private int count;
     private int rest;
     private int Runden2;
-
+    String Name;
     private int timeramount;
+    Button Primzahl;
+    Button Falsch;
+
+    Fragment SpielFragment = new SpielFragment();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,19 +63,17 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         zahlView = (TextView)findViewById(R.id.game_zahl);
         zahlView.setText(String.valueOf(zahl));
         Time1 = (TextView) findViewById(R.id.tVTime);
-
+        Primzahl = findViewById(R.id.game_right);
+        Falsch = findViewById(R.id.game_wrong);
 
         //für potPrim
         potPrim = 12;
-
-
-
 
         //Iwie anders noch
         Timer.start();
     }
 
-    private void resetPrims(){
+    public void resetPrims(){
         zahl = 1;
         prims.clear();
         prims.add(2);
@@ -80,10 +85,9 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         lastPrim = 2;
     }
 
-
-
     @Override
     public void onClick(View v) {
+        Timer.cancel();
         if ((zahl == prims.get(0) && v.getId() == R.id.game_right) || (zahl != prims.get(0) && v.getId() == R.id.game_wrong)){
             //Richtig
             if(zahl == prims.get(0)){   // Ist eine Primzahl
@@ -99,17 +103,16 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
                 prims.add(potPrim);
             }
             zahlView.setText(String.valueOf(zahl));
+            Timer.start();
         }else {
             //Falsch
-            ScoreSafer.addScore(new ScoreSafer.Score("Fimms", System.currentTimeMillis(), lastPrim));
-            ScoreSafer.saveScoreboard(this);
-            resetPrims();
-            zahlView.setText(String.valueOf(zahl));
+            Ausblenden();
+            FragmentTransaction transactionSpielFragment = getSupportFragmentManager().beginTransaction();
+            transactionSpielFragment.add(R.id.frag_container, SpielFragment);
+            transactionSpielFragment.commit();
+
 
         }
-        Timer.cancel();
-        Timer.start();
-
     }
 
     public void findPrim () {
@@ -138,14 +141,52 @@ public class SpielActivity extends AppCompatActivity implements View.OnClickList
         @Override
         public void onFinish() {
            //Zeit abgelaufen alles auf Anfang
-            ScoreSafer.addScore(new ScoreSafer.Score("Fimms", System.currentTimeMillis(), lastPrim));
-            ScoreSafer.saveScoreboard(getBaseContext());
-            resetPrims();
+            /*ScoreSafer.addScore(new ScoreSafer.Score("Fimms", System.currentTimeMillis(), lastPrim));
+            ScoreSafer.saveScoreboard(getBaseContext());*/
+            Ausblenden();
+            FragmentTransaction transactionSpielFragment = getSupportFragmentManager().beginTransaction();
+            transactionSpielFragment.add(R.id.frag_container, SpielFragment);
+            transactionSpielFragment.commit();
             Timer.cancel();
-            Timer.start();
             zahlView.setText(String.valueOf(zahl));
         }
     };
+
+    public void playerName(String playername){
+        ScoreSafer.addScore(new ScoreSafer.Score(playername, System.currentTimeMillis(), zahl));
+        ScoreSafer.saveScoreboard(this);
+        resetPrims();
+        zahlView.setText(String.valueOf(zahl));
+    }
+
+    public void CloseSpielActivity () {
+        finish();
+    }
+    public void StartTimer() {
+        Timer.start();
+    }
+
+    public void RemoveFragment() {
+        FragmentTransaction transactionSpielFragment = getSupportFragmentManager().beginTransaction();
+        transactionSpielFragment.remove(SpielFragment);
+        transactionSpielFragment.commit();
+    }
+
+    public void Ausblenden(){
+        logo.setVisibility(View.INVISIBLE);
+        Falsch.setVisibility(View.INVISIBLE);
+        Primzahl.setVisibility(View.INVISIBLE);
+        zahlView.setVisibility(View.INVISIBLE);
+        Time1.setVisibility(View.INVISIBLE);
+    }
+
+    public void Einblenden(){
+        logo.setVisibility(View.VISIBLE);
+        Falsch.setVisibility(View.VISIBLE);
+        Primzahl.setVisibility(View.VISIBLE);
+        zahlView.setVisibility(View.VISIBLE);
+        Time1.setVisibility(View.VISIBLE);
+    }
 
 
 }
